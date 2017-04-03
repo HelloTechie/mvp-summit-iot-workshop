@@ -59,6 +59,13 @@ You can use either of the following options to install Raspbian on your Raspberr
 * Use [NOOBS][lnk-noobs], a graphical user interface, to install the latest version of Raspbian. 
 * Manually [download][lnk-raspbian] and write the latest image of the Raspbian operating system to a SD card. 
 
+
+### Connect Raspberry Pi to Wifi
+
+* GUI: Click the Wifi icon and enter the Wifi credientials. 
+* Command Line: You can configure Wifi through the [terminal][http://www.makeuseof.com/tag/setup-wi-fi-bluetooth-raspberry-pi-3/].
+
+
 ### Install BlueZ 5.37
 The BLE modules talk to the Bluetooth hardware via the BlueZ stack. You need version 5.37 of BlueZ for the modules to work correctly. These instructions make sure the correct version of BlueZ is installed.
 
@@ -104,10 +111,16 @@ The BLE modules talk to the Bluetooth hardware via the BlueZ stack. You need ver
     sudo make install
     ```
 9. Change systemd service configuration for bluetooth so it points to the new bluetooth daemon in the file `/lib/systemd/system/bluetooth.service`. Replace the 'ExecStart' line with the following text: 
+    ```
+    sudo nano /lib/systemd/system/bluetooth.service
+    ```
     
+  Replace the 'ExecStart' line with the following text: 
+  
     ```
     ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E
     ```
+
 ## Connect Azure IoT Gateway to SensorTag
 ### Enable connectivity to the SensorTag device from your Raspberry Pi 3
 Before running the sample, you need to verify that your Raspberry Pi 3 can connect to the SensorTag device.
